@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="javascript" href="index.js">
+</head>
+<body>
+    <button id="misuraTempo">Clicca qui!</button>
+    <div id="semaforo">
+        <div id="rosso" class="luce"></div>
+        <div id="giallo" class="luce"></div>
+        <div id="verde" class="luce"></div>
+        </div>
+         
+        <script>
+
+        let misuraTempo = document.querySelector('#misuraTempo');
+        let startTime;
+        
+        misuraTempo.addEventListener("click", function(){
+            startTime = Date.now();
+            passaRosso();    
+            });
+
+
+        passaRosso();
+         
+        function passaVerde(){
+        document.getElementById('giallo').style.background='transparent';
+        document.getElementById('rosso').style.background='transparent';
+        document.getElementById('verde').style.background='green';
+        }
+         
+        function passaGiallo(){
+        document.getElementById('rosso').style.background='transparent';
+        document.getElementById('verde').style.background='transparent';
+        document.getElementById('giallo').style.background='yellow';
+        setTimeout(passaVerde, 2000);
+        }
+         
+        function passaRosso(){
+        document.getElementById('verde').style.background='transparent';
+        document.getElementById('giallo').style.background = 'transparent';
+        document.getElementById('rosso').style.background = 'red';
+        setTimeout(passaGiallo, 5000);
+        }
+         
+        </script>
+</body>
+</html>
